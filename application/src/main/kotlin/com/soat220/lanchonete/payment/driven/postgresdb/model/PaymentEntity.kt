@@ -1,45 +1,58 @@
 package com.soat220.lanchonete.payment.driven.postgresdb.model
 
-import com.soat220.lanchonete.common.driven.postgresdb.model.Order
 import com.soat220.lanchonete.payment.model.Payment
 import com.soat220.lanchonete.payment.model.PaymentStatus
 import java.time.LocalDateTime
 import javax.persistence.*
-import com.soat220.lanchonete.common.model.Order as DomainOrder
 
 @Entity
+@Table(name = "payment")
 class PaymentEntity(
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private val id: Long? = null,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "order_id")
-    private val order: Order,
+    @Column(name = "order_id")
+    private val order: Long,
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "payment_status")
     private val paymentStatus: PaymentStatus,
 
+    @Column(name = "total_amount")
     private val totalAmount: Double,
 
-    private val createdAt: LocalDateTime
+    private val createdAt: LocalDateTime,
+
+    private val updatedAt: LocalDateTime
 
 ) {
 
     fun toDomain() = Payment(
         id = id,
-        order = order.toDomain(),
+        order = order,
         createdAt = createdAt,
         paymentStatus = paymentStatus,
-        totalAmount = totalAmount
+        totalAmount = totalAmount,
+        updatedAt = updatedAt
     )
 
     companion object {
-        fun from(order: DomainOrder, paymentStatus: PaymentStatus, totalAmount: Double) = PaymentEntity(
-            order = Order.fromDomain(order),
+        fun from(order: Long, paymentStatus: PaymentStatus, totalAmount: Double) = PaymentEntity(
+            order = order,
             paymentStatus = paymentStatus,
+            totalAmount = totalAmount,
             createdAt = LocalDateTime.now(),
-            totalAmount = totalAmount
+            updatedAt = LocalDateTime.now()
+        )
+
+        fun from(payment: Payment) = PaymentEntity(
+            id = payment.id,
+            order = payment.order,
+            paymentStatus = payment.paymentStatus,
+            createdAt = payment.createdAt,
+            totalAmount = payment.totalAmount,
+            updatedAt = LocalDateTime.now()
         )
     }
 }
