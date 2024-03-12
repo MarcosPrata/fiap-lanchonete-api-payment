@@ -22,7 +22,7 @@ class OrderConsumerQueueAdapter (
         .registerTypeAdapter(LocalDateTime::class.java, LocalDateTimeTypeAdapter())
         .create()
 
-    @RabbitListener(queues = ["\${queue.pedidos.registrados}"])
+    @RabbitListener(queues = ["\${queue.pedidos.pagamento.pendente}"])
     override fun receive(@Payload message: String) {
 
         val order = gson.fromJson(message, Order::class.java)
