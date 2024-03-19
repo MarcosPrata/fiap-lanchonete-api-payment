@@ -1,6 +1,5 @@
 package com.soat220.lanchonete.payment.driver.consumer
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.soat220.lanchonete.common.model.Order
 import com.soat220.lanchonete.common.model.OrderItem

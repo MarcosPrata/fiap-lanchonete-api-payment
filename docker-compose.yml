@@ -7,19 +7,31 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      DB_URL: jdbc:postgresql://localhost:5432/lanchonete?currentSchema=payment
+      DB_URL: jdbc:postgresql://fiap-lanchonete-api-payment-postgres-1:5433/payment
       SERVER_PORT: 81
+      RABBIT_HOST: rabbitmq
     ports:
       - "81:81"
-#    depends_on:
-#      - postgres
-#
-#  postgres:
-#    image: postgres
-#    restart: unless-stopped
-#    environment:
-#      POSTGRES_PASSWORD: postgres
-#      POSTGRES_USER: postgres
-#      POSTGRES_DB: lanchonete
-#    ports:
-#      - "5432:5432"
+    depends_on:
+      - postgres
+    networks:
+      - fiap-lanchonete-api-customer-totem_shared
+
+  postgres:
+    image: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: payment
+    expose:
+      - "5433"
+    ports:
+        - "5433:5433"
+    command: -p 5433
+    networks:
+      - fiap-lanchonete-api-customer-totem_shared
+
+networks:
+  fiap-lanchonete-api-customer-totem_shared:
+    external: true

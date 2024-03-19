@@ -1,6 +1,10 @@
 package com.soat220.lanchonete.payment.driver.rest
 
+import com.soat220.lanchonete.common.exception.DomainException
+import com.soat220.lanchonete.common.result.Result
+import com.soat220.lanchonete.common.result.orThrow
 import com.soat220.lanchonete.payment.driver.rest.dto.request.UpdatePaymentRequest
+import com.soat220.lanchonete.payment.model.Payment
 import com.soat220.lanchonete.payment.usecase.ProcessPayment
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PostMapping
@@ -15,6 +19,8 @@ class PaymentController(
 ) {
 
     @PostMapping
-    fun updatePayment(@RequestBody updatePaymentRequest: UpdatePaymentRequest) =
-        processPayment.execute(updatePaymentRequest.orderId, updatePaymentRequest.paymentStatus)
+    fun updatePayment(@RequestBody updatePaymentRequest: UpdatePaymentRequest): Payment {
+        return processPayment.execute(updatePaymentRequest.orderId, updatePaymentRequest.paymentStatus).orThrow()
+    }
+
 }
