@@ -22,16 +22,16 @@ Arquitetura dos microsserviços
 
 Os seguintes repositórios também fazem parte desse projeto:
 
-Microsserviços: 
+Microsserviços:
 
 > [fiap-lanchonete-api-customer-totem](https://github.com/MarcosPrata/fiap-lanchonete-api-customer-totem) - Serviço responsável pela criação do pedido no Totem da Lanchonete.
 
-> [fiap-lanchonete-api-payment](https://github.com/MarcosPrata/fiap-lanchonete-api-payment) - Serviço responsável pela gestão do pagamento do pedido. 
+> [fiap-lanchonete-api-payment](https://github.com/MarcosPrata/fiap-lanchonete-api-payment) - Serviço responsável pela gestão do pagamento do pedido.
 
 > [fiap-lanchonete-api-kitchen](https://github.com/MarcosPrata/fiap-lanchonete-api-kitchen) - Serviço responsável por exibir os pedidos confirmados para a cozinha.
 
 > [fiap-lanchonete-api-orders-display](https://github.com/MarcosPrata/fiap-lanchonete-api-orders-display) - Serviço responsável por exibir os pedidos para os clientes (PREPARANDO E PRONTO).
- 
+
 > [fiap-lanchonete-api-erp](https://github.com/MarcosPrata/fiap-lanchonete-api-erp) - Serviço responsável pelo gerenciamento dos produtos.
 
 Infra:
@@ -47,11 +47,11 @@ Infra:
 - **Docker**
 - **Gradle** versão 6.6.1
 - **Java** 17 ou superior
-- **Kubectl** versão 5.0.1 ou superior
 
 ## 🚀 Quick Start
-- Rodar usando o Docker: 
-    - Em cada serviço execute o comando abaixo para subir as app's, os bancos de dados e o rabbitMQ
+- Rodar usando o Docker:
+    - Em cada serviço execute o comando abaixo para subir as app's, os bancos de dados e o rabbitMQ 
+  (necessário subir primeiro o customer-totem, por conta da network compartilhada dos containers)
         - `$ docker-compose up`
     - Lembre-se de ter as seguintes portas disponiveis: Serviços (80, 81, 82, 83), Postgres (5432, 5433, 5434, 5435) e RabbitMQ (5672, 15672)
 
@@ -64,6 +64,7 @@ Infra:
 ## LGPD
 
 - [Relatório de Impacto à Proteção de Dados Pessoais (RIPD).pdf](docs%2FRelat%F3rio%20de%20Impacto%20%E0%20Prote%E7%E3o%20de%20Dados%20Pessoais%20%28RIPD%29.pdf)
+- ROTA responsável por exclusão dos dados pessoais dos clientes pode ser encontrado na collection da aplicação (Delete customer).
 
 ## Postman collection
 
@@ -81,10 +82,10 @@ Infra:
 
 ## 🎓 Integrantes / Devs
 
-> Nome: Marcos Henrique Prata Junior 
-> 
+> Nome: Marcos Henrique Prata Junior
+>
 > Matrícula: RM349949
-> 
+>
 > [![Linkedin](https://img.shields.io/badge/Linkedin-0E76A8.svg?style=for-the-badge&logo=Linkedin&logoColor=white)](https://www.linkedin.com/in/marcos-henrique-prata-junior/)
 > [![GitHub](https://img.shields.io/badge/GitHub-333.svg?style=for-the-badge&logo=GitHub&logoColor=white)](https://github.com/MarcosPrata)
 
