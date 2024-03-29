@@ -63,7 +63,7 @@ Infra:
 
 ## LGPD
 
-- [Relatório de Impacto à Proteção de Dados Pessoais (RIPD).pdf](docs%2FRelat%F3rio%20de%20Impacto%20%E0%20Prote%E7%E3o%20de%20Dados%20Pessoais%20%28RIPD%29.pdf)
+- [Relatório de Impacto à Proteção de Dados Pessoais (RIPD).pdf](docs/Relatório%20de%20Impacto%20à%20Proteção%20de%20Dados%20Pessoais%20(RIPD).pdf)
 - ROTA responsável por exclusão dos dados pessoais dos clientes pode ser encontrado na collection da aplicação (Delete customer).
 
 ## Postman collection
