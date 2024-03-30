@@ -55,6 +55,9 @@ Infra:
         - `$ docker-compose up`
     - Lembre-se de ter as seguintes portas disponiveis: Serviços (80, 81, 82, 83), Postgres (5432, 5433, 5434, 5435) e RabbitMQ (5672, 15672)
 
+## VULNERABILIDADES OWASP ZAP
+
+- [Relatório de vulnerabilidades.pdf](docs/Relatório%20de%20Vulnerabilidades.pdf)
 
 ## SAGA
 
